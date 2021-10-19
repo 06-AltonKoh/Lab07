@@ -12,8 +12,12 @@ public class Player : MonoBehaviour
     public int PointCount;
     public Text Pointtxt;
 
+    public AudioClip[] Effect;
+    AudioSource As;
+
     void Start()
     {
+        As = GetComponent<AudioSource>();
         thisAnimation = GetComponent<Animation>();
         thisAnimation["Flap_Legacy"].speed = 3;
     }
@@ -47,6 +51,7 @@ public class Player : MonoBehaviour
         {
             PointCount += 1;
             Pointtxt.text = "SCORE: " + PointCount;
+            As.PlayOneShot(Effect[0]);
         }
     }
 }
